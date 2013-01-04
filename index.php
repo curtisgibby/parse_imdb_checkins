@@ -545,7 +545,7 @@ endif;
 		<h2>Usage</h2>
 		<ol>
 			<li>Download the "CHECKINS.csv" file from IMDb. (Log in to IMDb, go to the <a href="http://www.imdb.com/profile/lists">"Your Lists" page</a>, then find the "Your Checkins" link, and then find the "Export this list" link at the bottom.)</li>
-			<li>Upload the "CHECKINS.csv" file into this file.</li>
+			<li>Upload the "CHECKINS.csv" file into the form on this page.</li>
 		</ol>
 
 		<h2>About</h2>
