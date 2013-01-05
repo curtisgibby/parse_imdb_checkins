@@ -12,6 +12,7 @@ $currentSeasonStartDate = $currentSeasonStartDateYear.'-08-20';
 
 $defaults = array(
 	'maximum_chart_entries' => 10,
+	'use_sample_csv' => 0,
 	'current_season_only' => 0,
 	'current_season_start_date' => $currentSeasonStartDate,
 	'minimum_count' => 1,
@@ -55,6 +56,13 @@ if (!empty($options['current_season_only'])) {
 }
 else {
 	$currentSeasonOnly = false;
+}
+
+if (!empty($options['use_sample_csv'])) {
+	$useSampleCSV = true;
+}
+else {
+	$useSampleCSV = false;
 }
 
 if (isset($options['minimum_count']) && is_numeric($options['minimum_count'])) {
@@ -244,7 +252,7 @@ function array_merge_recursive_replace($array1, $array2) {
 
 <html>
 	<head>
-		<title>Parse IMDb Checkins</title>
+		<title>Parse IMDb Check-ins</title>
 		<link href="bootstrap.min.css" rel="stylesheet" media="screen">
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
 	</head>
@@ -255,6 +263,14 @@ function array_merge_recursive_replace($array1, $array2) {
 
 
 <?php
+
+if ($useSampleCSV) {
+	if (empty($_POST)) {
+		$_POST = 'not empty!';
+	}
+
+	$_FILES['csv_file']['tmp_name'] = 'CHECKINS.csv';
+}
 
 if (!empty($_POST)):
 
@@ -489,7 +505,7 @@ endif;
 				<label class="control-label" for="minimum_count">Minimum Count</label>
 				<div class="controls">
 					<input type="number" class="input-xlarge" id="minimum_count" name="minimum_count" value="<?php echo $options['minimum_count']?>">
-					<p class="help-block">For TV shows, the minimum number of check-ins for the show to be displayed (Default 1 = no minimum)</p>
+					<p class="help-block">For TV shows, the minimum number of check-ins for the show to be displayed, in case you tried out a pilot or two and don't want those shows appearing in your stats. (Default 1 = no minimum)</p>
 				</div>
 			</div>
 			<div class="control-group">
@@ -521,6 +537,15 @@ endif;
 				</div>
 			</div>
 			<div class="control-group">
+				<label class="control-label" for="use_sample_csv">Use Sample CSV</label>
+				<div class="controls">
+					<label class="checkbox">
+						<input type="checkbox" id="use_sample_csv" name="use_sample_csv"<?php echo (!empty($options['use_sample_csv']) ? ' checked="checked"': ''); ?>>
+						<p class="help-block">If you don't have your own check-ins and just want to try out the system, we'll automatically use my <a href="CHECKINS.csv">CHECKINS.csv</a> file (as of <?php echo date("d M Y", filemtime("CHECKINS.csv"))?>).</p>
+					</label>
+				</div>
+			</div>
+			<div class="control-group" id="csv_file_div">
 				<label class="control-label" for="csv_file">CSV File</label>
 				<div class="controls">
 					<input class="input-file" id="csv_file" name="csv_file" type="file">
@@ -562,6 +587,15 @@ endif;
 				}
 				else{
 					$("#current_season_start_date_div").hide('slow');
+				};
+			}).change();
+
+			$("#use_sample_csv").change( function () {
+				if (!$(this).is(":checked")) {
+					$("#csv_file_div").show('slow');
+				}
+				else{
+					$("#csv_file_div").hide('slow');
 				};
 			}).change();
 		});
