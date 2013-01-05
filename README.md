@@ -25,3 +25,4 @@ There's also a live version of the code running on [my web site](http://www.curt
 * `current_season_start_date`
 * `chart_width`
 * `chart_height`
+* `use_sample_csv`
