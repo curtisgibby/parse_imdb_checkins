@@ -5,10 +5,7 @@ Parse IMDb check-ins
 
 ## Features
 
-* List most-watched titles (totals, movies and TV shows separately)
-* List fastest-watched titles (time between release date and check-in; totals, movies and TV shows separately)
-* List check-ins by day of week and by month (totals, movies and TV shows separately)
-* List most popular genres (totals, movies and TV shows separately)
+* Select from one or more types of data to parse from your IMDb data.
 * Update width and height of resulting Google Visualization charts
 * Limit the number of entries in charts (for example, to display only the 10 most-watched TV shows)
 * Specify the minimum number of check-ins for a TV show to be displayed, in case you tried out a pilot or two and don't want those shows appearing in your stats. (Default 1 = no minimum)
