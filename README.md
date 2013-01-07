@@ -1,7 +1,7 @@
 Parse IMDb check-ins
 ====================
 
-IMDb's check-in service is rather new and thus is very limited: there's only two ways to get data in, and only one way to get data out (by pulling down a CSV file of your check-ins). This leads to a chicken-and-egg problem: why would you put the time into doing the check-ins if there's nothing that you can do with the data? This script helps alleviate that problem somewhat by making some sense of the raw data provided by that CSV.
+[IMDb's check-in service](http://www.imdb.com/help/search?domain=helpdesk_faq&index=1&file=checkins) is rather new and thus is very limited: there's only two ways to get data in, and only one way to get data out (by pulling down a CSV file of your check-ins). This leads to a chicken-and-egg problem: why would you put the time into doing the check-ins if there's nothing that you can do with the data? This script helps alleviate that problem somewhat by making some sense of the raw data provided by that CSV.
 
 ## Features
 
