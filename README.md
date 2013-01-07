@@ -9,6 +9,11 @@ Parse IMDb check-ins
 * List fastest-watched titles (time between release date and check-in; totals, movies and TV shows separately)
 * List check-ins by day of week and by month (totals, movies and TV shows separately)
 * List most popular genres (totals, movies and TV shows separately)
+* Update width and height of resulting Google Visualization charts
+* Limit the number of entries in charts (for example, to display only the 10 most-watched TV shows)
+* Specify the minimum number of check-ins for a TV show to be displayed, in case you tried out a pilot or two and don't want those shows appearing in your stats. (Default 1 = no minimum)
+* For TV shows, display only shows released during the current season (so as to not skew the "fastest watched" chart with check-ins tied to older seasons)
+* If you don't have your own check-ins and just want to try out the system, you can use my sample CHECKINS.csv file
 
 ## Usage
 
@@ -17,12 +22,17 @@ Parse IMDb check-ins
 
 There's also a live version of the code running on [my web site](http://www.curtisgibby.com/parse_imdb_checkins/index.php).
 
-## Options
+## Charts
 
-* `maximum_chart_entries`
-* `minimum_count`
-* `current_season_only`
-* `current_season_start_date`
-* `chart_width`
-* `chart_height`
-* `use_sample_csv`
+* Most Watched TV Shows
+* Fastest Watched TV Shows
+* Fastest Watched Movies
+* Total Check-ins Per Day of Week
+* TV Check-ins Per Day of Week
+* Movie Check-ins Per Day of Week
+* Total Check-ins Per Month
+* TV Check-ins Per Month
+* Movie Check-ins Per Month
+* Total Check-ins Per Genre
+* TV Check-ins Per Genre
+* Movie Check-ins Per Genre
