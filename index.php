@@ -31,6 +31,7 @@ $defaults = array(
 		'genresTotal' => true,
 		'genresTv' => false,
 		'genresMovies' => false,
+		'busiestDays' => true,
 	)
 );
 
@@ -188,6 +189,17 @@ $charts = array(
 			'height' => $chartHeight
 		)
 	),
+	'busiestDays' => array(
+		'dataSource' => 'busiestDays',
+		'type' => 'Column',
+		'label' => 'Check-ins',
+		'maximum_entries_filterable' => true,
+		'chartOptions' => array(
+			'title' => 'Most Check-ins Per Day',
+			'width' => $chartWidth,
+			'height' => $chartHeight
+		)
+	),
 	'genresTotal' => array(
 		'dataSource' => "genresTotal",
 		'type' => 'Column',
@@ -312,7 +324,7 @@ if (!empty($_POST)):
 			'December' => 0
 		);
 
-		$genresTotal = $genresTv = $genresMovies = array();
+		$busiestDays = $genresTotal = $genresTv = $genresMovies = array();
 
 		$i = 0;
 		while (($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
@@ -341,9 +353,15 @@ if (!empty($_POST)):
 
 			$dayOfWeek = date('l', $checkinTime);
 			$month = date('F', $checkinTime);
+			$date = date('D, d M Y', $checkinTime);
 
 			$daysOfWeekTotal[$dayOfWeek]++;
 			$monthsTotal[$month]++;
+
+			if(!array_key_exists($date, $busiestDays)) {
+				$busiestDays[$date] = 0;
+			}
+			$busiestDays[$date]++;
 
 			foreach ($genres as $genre) {
 				if(!array_key_exists($genre, $genresTotal)) {
@@ -428,6 +446,7 @@ if (!empty($_POST)):
 	asort($fastestWatchedMovies);
 	arsort($mostWatched);
 	arsort($genresTotal);
+	arsort($busiestDays);
 	arsort($genresTv);
 	arsort($genresMovies);
 

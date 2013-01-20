@@ -30,6 +30,7 @@ There's also a live version of the code running on [my web site](http://www.curt
 * Total Check-ins Per Month
 * TV Check-ins Per Month
 * Movie Check-ins Per Month
+* Most Check-ins Per Day
 * Total Check-ins Per Genre
 * TV Check-ins Per Genre
 * Movie Check-ins Per Genre
