@@ -91,7 +91,6 @@ $currentSeasonStartTime = strtotime($options['current_season_start_date']);
 
 $charts = array(
 	'mostWatched' => array(
-		'dataSource' => 'mostWatched',
 		'type' => 'Column',
 		'label' => 'Count',
 		'maximum_entries_filterable' => true,
@@ -102,7 +101,6 @@ $charts = array(
 		)
 	),
 	'fastestWatchedTv' => array(
-		'dataSource' => "fastestWatchedTv",
 		'type' => 'Column',
 		'label' => 'Average days between release and check-in',
 		'maximum_entries_filterable' => true,
@@ -113,7 +111,6 @@ $charts = array(
 		)
 	),
 	'fastestWatchedMovies' => array(
-		'dataSource' => "fastestWatchedMovies",
 		'type' => 'Column',
 		'label' => 'Days between release and check-in',
 		'maximum_entries_filterable' => true,
@@ -124,7 +121,6 @@ $charts = array(
 		)
 	),
 	'daysOfWeekTotal' => array(
-		'dataSource' => "daysOfWeekTotal",
 		'type' => 'Pie',
 		'label' => 'Check-ins',
 		'maximum_entries_filterable' => false,
@@ -135,7 +131,6 @@ $charts = array(
 		)
 	),
 	'daysOfWeekTv' => array(
-		'dataSource' => "daysOfWeekTv",
 		'type' => 'Pie',
 		'label' => 'Check-ins',
 		'maximum_entries_filterable' => false,
@@ -146,7 +141,6 @@ $charts = array(
 		)
 	),
 	'daysOfWeekMovies' => array(
-		'dataSource' => "daysOfWeekMovies",
 		'type' => 'Pie',
 		'label' => 'Check-ins',
 		'maximum_entries_filterable' => false,
@@ -157,7 +151,6 @@ $charts = array(
 		)
 	),
 	'monthsTotal' => array(
-		'dataSource' => "monthsTotal",
 		'type' => 'Column',
 		'label' => 'Check-ins',
 		'maximum_entries_filterable' => false,
@@ -168,7 +161,6 @@ $charts = array(
 		)
 	),
 	'monthsTv' => array(
-		'dataSource' => "monthsTv",
 		'type' => 'Column',
 		'label' => 'Check-ins',
 		'maximum_entries_filterable' => false,
@@ -179,7 +171,6 @@ $charts = array(
 		)
 	),
 	'monthsMovies' => array(
-		'dataSource' => "monthsMovies",
 		'type' => 'Column',
 		'label' => 'Check-ins',
 		'maximum_entries_filterable' => false,
@@ -190,7 +181,6 @@ $charts = array(
 		)
 	),
 	'busiestDays' => array(
-		'dataSource' => 'busiestDays',
 		'type' => 'Column',
 		'label' => 'Check-ins',
 		'maximum_entries_filterable' => true,
@@ -201,7 +191,6 @@ $charts = array(
 		)
 	),
 	'genresTotal' => array(
-		'dataSource' => "genresTotal",
 		'type' => 'Column',
 		'label' => 'Check-ins',
 		'maximum_entries_filterable' => true,
@@ -212,7 +201,6 @@ $charts = array(
 		)
 	),
 	'genresTv' => array(
-		'dataSource' => "genresTv",
 		'type' => 'Column',
 		'label' => 'Check-ins',
 		'maximum_entries_filterable' => true,
@@ -223,7 +211,6 @@ $charts = array(
 		)
 	),
 	'genresMovies' => array(
-		'dataSource' => "genresMovies",
 		'type' => 'Column',
 		'label' => 'Check-ins',
 		'maximum_entries_filterable' => true,
@@ -476,7 +463,7 @@ if (!empty($_POST)):
 				<?php echo $chartType; ?>Data.addRows([
 					<?php
 						$jsData = array();
-						foreach ($$chartTypeData['dataSource'] as $title => $count) {
+						foreach ($$chartType as $title => $count) {
 							// TODO: figure out a way to put the 'total' (average) in as a horizontal line
 							if ($title == 'total') {
 								continue;
