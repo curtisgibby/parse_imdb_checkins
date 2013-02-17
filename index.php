@@ -226,8 +226,14 @@ $charts = array(
 * Calculates the time in days between when the title was released
 * and when the checkin occurred
 */
-function watch_delay($row) {
+function watch_delay($row, $isTvShow = false) {
 	$created = strtotime(trim($row[2]));
+
+	if ($isTvShow) {
+		// TV shows are released, on average, at 8 p.m. instead of 12 midnight
+		$row[14] .= ' 20:00:00';
+	}
+
 	$released = strtotime(trim($row[14]));
 	return ($created - $released) / 86400;
 }
@@ -358,7 +364,7 @@ if (!empty($_POST)):
 			}
 
 			if ($isTvShow) {
-				$watchDelay = watch_delay($row);
+				$watchDelay = watch_delay($row, $isTvShow);
 				$output['tv']['total']['count']++;
 				$output['tv']['total']['watch_delay'] += $watchDelay;
 				list($showTitle, $episodeTitle) = explode(': ', trim($row[5]));
@@ -384,7 +390,7 @@ if (!empty($_POST)):
 			else {
 				$watchDelay = watch_delay($row);
 				$output['movies']['total']['count']++;
-				$output['movies']['total']['watch_delay'] += ;
+				$output['movies']['total']['watch_delay'] += $watchDelay;
 				$title = utf8_decode(trim($row[5]));
 				$output['movies'][$title] = array('watch_delay' => $watchDelay);
 				$daysOfWeekMovies[$dayOfWeek]++;
