@@ -382,10 +382,11 @@ if (!empty($_POST)):
 				}
 			}
 			else {
+				$watchDelay = watch_delay($row);
 				$output['movies']['total']['count']++;
-				$output['movies']['total']['watch_delay'] += watch_delay($row);
+				$output['movies']['total']['watch_delay'] += ;
 				$title = utf8_decode(trim($row[5]));
-				$output['movies'][$title] = array('watch_delay' => watch_delay($row));
+				$output['movies'][$title] = array('watch_delay' => $watchDelay);
 				$daysOfWeekMovies[$dayOfWeek]++;
 				$monthsMovies[$month]++;
 
